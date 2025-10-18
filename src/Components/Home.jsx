@@ -5,6 +5,7 @@ import Header from "./Header";
 import RowOfIcon from "./RowOfIcon";
 import cup from '../assets/cup.png';
 import umbrella from '../assets/umbrella.png';
+import FollowUs from "./FollowUs";
 
 const Home = () => {
     const initialCoffees = useLoaderData()
@@ -18,7 +19,7 @@ const Home = () => {
                 <img className="absolute right-0 top-40" src={umbrella} alt="" />
                     <div className="flex-col text-center items-center mt-[100px] mb-12 space-y-2">
                         <p>--- Sip & Savor ---</p>
-                        <h4 className="text-4xl rancho">Our Popular Products</h4>
+                        <h4 className="text-4xl rancho text-shadow-md text-shadow-amber-900">Our Popular Products</h4>
                         <button className="btn rancho bg-[#E3B577] text-white border border-black text-xl text-shadow-zinc-950 text-shadow-md">Add Coffee</button>
                     </div>
             </div>
@@ -32,6 +33,7 @@ const Home = () => {
                     ></CoffeeCard>)
                 }
             </div>
+            <FollowUs></FollowUs>
         </div>
     );
 };

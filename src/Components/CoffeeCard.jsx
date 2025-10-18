@@ -47,14 +47,14 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                     src={photo}
                     alt="Movie" />
             </figure>
-            <div className="flex justify-between w-full mt-8">
-                <div>
-                    <h2 className="">Name : {name}</h2>
-                    <p>Price : {price}</p>
-                    <p>Quantity : {quantity}</p>
+            <div className="flex justify-between w-full ">
+                <div className="my-auto">
+                    <h2 className=""><span className="font-bold">Name :</span> {name}</h2>
+                    <p><span className="font-bold">Price : </span>{price}</p>
+                    <p><span className="font-bold">Quantity : </span>{quantity}</p>
                 </div>
-                <div className="card-actions justify-end">
-                    <div className="join join-vertical space-y-2 ">
+                <div className="card-actions justify-end mt-8">
+                    <div className="join join-vertical space-y-2  ">
                         <Link to={`/coffee/${_id}`}>
                             <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye className="text-white"/></button>
                         </Link>
