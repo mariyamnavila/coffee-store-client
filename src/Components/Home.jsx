@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CoffeeCard from "./CoffeeCard";
 import { useState } from "react";
 import Header from "./Header";
@@ -16,11 +16,12 @@ const Home = () => {
             <RowOfIcon></RowOfIcon>
             <div className="relative">
                 <img className="absolute top-20" src={cup} alt="" />
-                <img className="absolute right-0 top-40" src={umbrella} alt="" />
+                <img className="absolute right-0 top-40 z-0" src={umbrella} alt="" />
                     <div className="flex-col text-center items-center mt-[100px] mb-12 space-y-2">
                         <p>--- Sip & Savor ---</p>
                         <h4 className="text-4xl rancho text-shadow-md text-shadow-amber-900">Our Popular Products</h4>
-                        <button className="btn rancho bg-[#E3B577] text-white border border-black text-xl text-shadow-zinc-950 text-shadow-md hover:bg-transparent ">Add Coffee</button>
+                        <Link to={'/addCoffee'}><button className="btn rancho bg-[#E3B577] text-white border border-black text-xl text-shadow-zinc-950 text-shadow-md hover:bg-transparent ">Add Coffee</button></Link>
+                        
                     </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto ml-4 mr-4">

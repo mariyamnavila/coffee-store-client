@@ -1,3 +1,5 @@
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddCoffee = () => {
@@ -30,9 +32,11 @@ const AddCoffee = () => {
     }
 
     return (
-        <div className=" max-w-7xl mx-auto ">
-            <button className="btn bg-transparent border-none p-8 my-8 rancho text-2xl hover:bg-[#e3b577]">Back to home</button>
-            <div className="bg-[#f4f3f0] p-24 mb-[120px]">
+        <div className=" max-w-7xl mx-auto bg-[url('./assets/back.png')]">
+            <Link to={'/'}>
+                <button className="btn bg-transparent border-none p-8 my-8 rancho text-2xl hover:bg-[#e3b577] flex"> <FaArrowLeftLong className="mr-4" />Back to home</button>
+            </Link>
+            <div className="bg-[#f4f3f08e] p-24 mb-[120px]">
                 <div className="p-12 text-center space-y-4">
                     <h1 className="text-6xl rancho text-shadow-md text-shadow-amber-900">Add New coffee</h1>
                     <p>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>

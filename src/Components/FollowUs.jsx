@@ -8,7 +8,7 @@ import cup7 from '../assets/cups/Rectangle 15.png';
 import cup8 from '../assets/cups/Rectangle 16.png';
 const FollowUs = () => {
     return (
-        <div className="max-w-7xl mx-auto my-[120px]">
+        <div className="max-w-7xl mx-auto my-[120px] relative z-20">
             <div className="flex-col text-center mb-12">
                 <p>Follow Us Now</p>
                 <h4 className="text-4xl rancho text-shadow-md text-shadow-amber-900">Follow on Instagram</h4>
