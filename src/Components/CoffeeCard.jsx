@@ -54,7 +54,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                     <p><span className="font-bold">Quantity : </span>{quantity}</p>
                 </div>
                 <div className="card-actions justify-end mt-8">
-                    <div className="join join-vertical space-y-2  ">
+                    <div className="join join-vertical space-y-2">
                         <Link to={`/coffee/${_id}`}>
                             <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye className="text-white"/></button>
                         </Link>

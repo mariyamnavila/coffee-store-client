@@ -13,7 +13,7 @@ const FollowUs = () => {
                 <p>Follow Us Now</p>
                 <h4 className="text-4xl rancho text-shadow-md text-shadow-amber-900">Follow on Instagram</h4>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-4">
                 <img className='rounded-xl w-[312px] h-[350px] object-cover' src={cup1} alt="" />
                 <img className='rounded-xl w-[312px] h-[350px] object-cover' src={cup2} alt="" />
                 <img className='rounded-xl w-[312px] h-[350px] object-cover' src={cup3} alt="" />

@@ -5,7 +5,7 @@ import icon4 from '../assets/icons/4.png';
 const RowOfIcon = () => {
     return (
         <div className="bg-[#eceae3]">
-            <div className='flex max-w-7xl mx-auto py-14'>
+            <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto py-14 space-y-2'>
                 <div className='space-y-2 mx-2'>
                     <img src={icon1} alt="" />
                     <p className="rancho text-3xl">Awesome Aroma</p>
