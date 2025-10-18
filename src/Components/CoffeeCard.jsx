@@ -1,9 +1,10 @@
 import { HiPencil } from "react-icons/hi";
 import { IoMdEye } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
     const { photo,
         name,
         price,
@@ -32,6 +33,8 @@ const CoffeeCard = ({ coffee }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            const remainingCoffees = coffees.filter(cof => cof._id !== _id)
+                            setCoffees(remainingCoffees)
                         }
                     })
             }
@@ -53,8 +56,12 @@ const CoffeeCard = ({ coffee }) => {
                 <div className="card-actions justify-end">
                     <div className="join join-vertical space-y-2
                     ">
-                        <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye /></button>
-                        <button className="btn join-item bg-[#3c393b] text-xl"><HiPencil /></button>
+                        <Link to={`/coffee/${_id}`}>
+                            <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye /></button>
+                        </Link>
+                        <Link to={`updateCoffee/${_id}`}>
+                            <button className="btn join-item bg-[#3c393b] text-xl"><HiPencil /></button>
+                        </Link>
                         <button onClick={() => { handleDelete(_id) }} className="btn join-item bg-[#ea4744] text-xl"><MdDelete /></button>
                     </div>
                 </div>
