@@ -41,7 +41,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         });
     }
     return (
-        <div className="card card-side bg-base-100 shadow-sm p-3 border-2">
+        <div className="card card-side shadow-sm p-3 bg-[#f5f4f1a6]">
             <figure>
                 <img className="p-4 object-fit"
                     src={photo}
@@ -54,15 +54,14 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                     <p>Quantity : {quantity}</p>
                 </div>
                 <div className="card-actions justify-end">
-                    <div className="join join-vertical space-y-2
-                    ">
+                    <div className="join join-vertical space-y-2 ">
                         <Link to={`/coffee/${_id}`}>
-                            <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye /></button>
+                            <button className="btn join-item bg-[#d2b48c] text-xl"><IoMdEye className="text-white"/></button>
                         </Link>
                         <Link to={`updateCoffee/${_id}`}>
-                            <button className="btn join-item bg-[#3c393b] text-xl"><HiPencil /></button>
+                            <button className="btn join-item bg-[#3c393b] text-xl"><HiPencil className="text-white"/></button>
                         </Link>
-                        <button onClick={() => { handleDelete(_id) }} className="btn join-item bg-[#ea4744] text-xl"><MdDelete /></button>
+                        <button onClick={() => { handleDelete(_id) }} className="btn join-item bg-[#ea4744] text-xl"><MdDelete className="text-white"/></button>
                     </div>
                 </div>
             </div>
