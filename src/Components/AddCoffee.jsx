@@ -7,7 +7,6 @@ const AddCoffee = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries())
-        // console.log(formData.entries(),coffeeData);
 
         fetch('http://localhost:3000/coffees', {
             method: 'POST',
@@ -19,7 +18,7 @@ const AddCoffee = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    console.log('after adding coffee', data);
+                    // console.log('after adding coffee', data);
                     Swal.fire({
                         title: "Coffee added successfully",
                         icon: "success",
