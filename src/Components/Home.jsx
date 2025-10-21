@@ -20,7 +20,7 @@ const Home = () => {
                     <div className="flex-col text-center items-center mt-[100px] mb-12 space-y-2">
                         <p>--- Sip & Savor ---</p>
                         <h4 className="text-4xl rancho text-shadow-md text-shadow-amber-900">Our Popular Products</h4>
-                        <Link to={'/addCoffee'}><button className="btn rancho bg-[#E3B577] text-white border border-black text-xl text-shadow-zinc-950 text-shadow-md hover:bg-transparent ">Add Coffee</button></Link>
+                        <Link to={'/addCoffee'}><button className="btn rancho bg-[#E3B577] text-white border border-black text-xl text-shadow-zinc-950 text-shadow-md hover:bg-transparent  hover:text-black">Add Coffee</button></Link>
                         
                     </div>
             </div>
