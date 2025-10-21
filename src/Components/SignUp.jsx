@@ -123,7 +123,7 @@ const SignUp = () => {
                             error && <p className="text-accent text-xs">{error}</p>
                         } */}
                         <button className="btn btn-primary mt-4">Sign Up</button>
-                        <p className="font-semibold text-center pt-4">Already Have An Account ? <Link to={'/signIn'} className="text-secondary">Login</Link></p>
+                        <p className="font-semibold text-center pt-4">Already Have An Account ? <Link to={'/signIn'} className="text-secondary">Sign in</Link></p>
                     </fieldset>
                 </form>
             </div>
