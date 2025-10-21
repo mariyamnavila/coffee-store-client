@@ -1,13 +1,50 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Users = () => {
     const initialUsers = useLoaderData();
     const [users, setUsers] = useState(initialUsers)
     // console.log(setUsers);
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/users/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log('after delete', data);
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remainingUsers = users.filter(user => user._id !== id)
+                            setUsers(remainingUsers)
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div className="max-w-7xl mx-auto">
-            <h2> Users : {initialUsers?.length}</h2>
+            <Link to={'/'}>
+                <button className="btn bg-transparent border-none p-8 my-8 rancho text-2xl hover:bg-[#e3b577] flex"> <FaArrowLeftLong className="mr-4" />Back to home</button>
+            </Link>
+            {/* <h2> Users : {users?.length}</h2> */}
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -18,7 +55,7 @@ const Users = () => {
                             </th>
                             <th>Name</th>
                             <th>Phone Number</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -49,11 +86,16 @@ const Users = () => {
                                     <br />
                                     {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                                 </td>
-                                <td>Purple</td>
+                                <td>{user?.email}</td>
                                 <th>
-                                    <button className="btn btn-accent btn-xs">V</button>
-                                    <button className="btn btn-accent btn-xs">E</button>
-                                    <button className="btn btn-accent btn-xs">X</button>
+                                    <button className="btn bg-[#2F2F2F] text-white border-black btn-xs">V</button>
+                                    <button className="btn bg-[#2F2F2F] text-white border-black btn-xs">E</button>
+                                    <button
+                                        onClick={() => { handleDelete(user._id) }}
+                                        className="btn bg-[#2F2F2F] text-white border-black btn-xs"
+                                    >
+                                        X
+                                    </button>
                                 </th>
                             </tr>)
                         }
