@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const SignIn = () => {
 
@@ -20,17 +21,10 @@ const SignIn = () => {
                     email,
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
-                fetch('https://coffee-store-server-theta-three.vercel.app/users', {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify(signInInfo)
-                })
-                    .then(res => res.json())
-                    .then((data) => {
-                        console.log('after Updating', data);
-                        if (data.insertedId) {
+
+                axios.patch('https://coffee-store-server-theta-three.vercel.app/users', signInInfo)
+                    .then(data => {
+                        if (data.data.insertedId) {
                             Swal.fire({
                                 // position: "top-end",
                                 icon: "success",
@@ -40,6 +34,27 @@ const SignIn = () => {
                             });
                         }
                     })
+
+            //     fetch('https://coffee-store-server-theta-three.vercel.app/users', {
+            //         method: 'PATCH',
+            //         headers: {
+            //             'content-type': 'application/json',
+            //         },
+            //         body: JSON.stringify(signInInfo)
+            //     })
+            //         .then(res => res.json())
+            //         .then((data) => {
+            //             console.log('after Updating', data);
+            //             if (data.insertedId) {
+            //                 Swal.fire({
+            //                     // position: "top-end",
+            //                     icon: "success",
+            //                     title: "Your Account is successfully Signed In",
+            //                     showConfirmButton: false,
+            //                     timer: 1500
+            //                 });
+            //             }
+            //         })
             })
             .catch(error => {
                 console.log('ERRORRR', error);

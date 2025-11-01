@@ -2,6 +2,7 @@ import { use } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignUp = () => {
 
@@ -23,20 +24,14 @@ const SignUp = () => {
                 const userProfile = {
                     email,
                     ...restFormData,
-                    creationTime : result.user?.metadata?.creationTime,
-                    lastSignInTime : result.user?.metadata?.lastSignInTime
+                    creationTime: result.user?.metadata?.creationTime,
+                    lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
-                fetch('https://coffee-store-server-theta-three.vercel.app/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify(userProfile)
-                })
-                    .then(res => res.json())
-                    .then((data) => {
-                        console.log('after adding', data);
-                        if (data.insertedId) {
+
+                axios.post('https://coffee-store-server-theta-three.vercel.app/users', userProfile)
+                    .then(data => {
+                        console.log(data?.data);
+                        if (data?.data?.insertedId) {
                             Swal.fire({
                                 // position: "top-end",
                                 icon: "success",
@@ -46,6 +41,27 @@ const SignUp = () => {
                             });
                         }
                     })
+
+            //     fetch('https://coffee-store-server-theta-three.vercel.app/users', {
+            //         method: 'POST',
+            //         headers: {
+            //             'content-type': 'application/json',
+            //         },
+            //         body: JSON.stringify(userProfile)
+            //     })
+            //         .then(res => res.json())
+            //         .then((data) => {
+            //             console.log('after adding', data);
+            //             if (data.insertedId) {
+            //                 Swal.fire({
+            //                     // position: "top-end",
+            //                     icon: "success",
+            //                     title: "Your Account is created",
+            //                     showConfirmButton: false,
+            //                     timer: 1500
+            //                 });
+            //             }
+            //         })
             })
             .catch(error => {
                 console.log('ERRORRR', error);

@@ -1,27 +1,36 @@
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+// import { useEffect, useState } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Users = () => {
-    const initialUsers = useLoaderData();
-    const [users, setUsers] = useState(initialUsers)
-    // console.log(setUsers);
+const Users2 = () => {
+
+    const { isPending, isError, error, data: users } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch('https://coffee-store-server-theta-three.vercel.app/users')
+            return res.json()
+        }
+    })
+
+    // const [users, setUsers] = useState([])
 
     // useEffect(() => {
-    //     axios.get('/')
-    //         .then(data => {
-    //             console.log(data.data);
-    //         })
-    // }, [])
+    //    fetch('https://coffee-store-server-theta-three.vercel.app/users') 
+    //    .then(res=>res.json())
+    //    .then(data=>{
+    //     setUsers(data)
+    //    })
+    // },[])
 
-    // useEffect(() => {
-    //     fetch('/')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    // }, [])
+    if (isPending) {
+        return <span className="loading loading-spinner text-neutral"></span>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -46,8 +55,8 @@ const Users = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remainingUsers = users.filter(user => user._id !== id)
-                            setUsers(remainingUsers)
+                            // const remainingUsers = users.filter(user => user._id !== id)
+                            // setUsers(remainingUsers)
                         }
                     })
             }
@@ -121,4 +130,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default Users2;
